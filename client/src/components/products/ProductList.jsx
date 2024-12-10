@@ -10,13 +10,15 @@ export const ProductList = () => {
   }, []);
 
   return (
-    <div className="product-list">
+    <div className="container mx-auto px-4 py-8">
       {products.length > 0 ? (
-        products.map((product) => (
-          <ProductItem product={product} key={product._id} />
-        ))
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <ProductItem product={product} key={product._id} />
+          ))}
+        </div>
       ) : (
-        <p>Cargando Productos...</p>
+        <p className="text-center text-gray-500">Cargando Productos...</p>
       )}
     </div>
   );
