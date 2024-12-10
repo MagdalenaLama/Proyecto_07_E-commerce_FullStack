@@ -2,14 +2,14 @@ export const CartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
       const existInProduct = state.cart.find(
-        (product) => product.id === action.payload.id
+        (product) => product._id === action.payload._id
       );
 
       if (existInProduct) {
         return {
           ...state,
           cart: state.cart.map((product) =>
-            product.id === action.payload.id
+            product._id === action.payload._id
               ? { ...product, quantity: product.quantity + 1 }
               : product
           ),
