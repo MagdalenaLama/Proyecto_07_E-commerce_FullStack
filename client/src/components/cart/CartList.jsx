@@ -24,8 +24,6 @@ export const CartList = () => {
       unit_price: Number(product.price),
       currency_id: "CLP",
     }));
-    console.log(items[0].unit_price);
-    console.log(typeof items[0].unit_price);
 
     try {
       const response = await axios.post(

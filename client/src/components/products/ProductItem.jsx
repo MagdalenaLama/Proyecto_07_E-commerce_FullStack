@@ -34,7 +34,7 @@ export const ProductItem = ({ product }) => {
           <p>
             <span className="text-3xl font-bold text-slate-900">{`$ ${price}/Kg`}</span>
           </p>
-          <div>
+          <div className="flex items-center justify-center space-x-4">
             <button
               onClick={handleDecrement}
               className="flex items-center justify-center bg-gray-300 px-3 py-1 text-lg font-bold text-gray-700 hover:bg-gray-400"

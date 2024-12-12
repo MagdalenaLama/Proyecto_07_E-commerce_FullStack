@@ -6,6 +6,17 @@ export const apiClient = axios.create({
   baseURL: API_URL,
 });
 
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = token;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 export const getUsers = async () => {
   try {
     const { data } = await apiClient.get("/users");

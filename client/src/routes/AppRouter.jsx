@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
-import { Home, Cart, Login, Register, Products } from "../pages/index";
+import { Home, Cart, Login, Register, Products, Admin } from "../pages/index";
 
 export const AppRouter = () => {
   return (
@@ -12,6 +12,7 @@ export const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
   );
