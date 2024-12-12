@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Home, Cart, Login, Register, Products, Admin } from "../pages/index";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRouter = () => {
   return (
@@ -12,7 +13,14 @@ export const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <Admin />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

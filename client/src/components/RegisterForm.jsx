@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/User/userContext";
+import { useNavigate } from "react-router";
 
 export const RegisterForm = () => {
   const userCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   const { register } = userCtx;
 
   const [data, setData] = useState({
@@ -21,6 +23,7 @@ export const RegisterForm = () => {
   const sendData = (event) => {
     event.preventDefault();
     register(data);
+    navigate("/login");
   };
 
   return (

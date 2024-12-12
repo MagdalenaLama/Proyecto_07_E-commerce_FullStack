@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const API_URL = "https://proyecto-06-aplicacion-backend-con.onrender.com";
 
@@ -16,6 +17,15 @@ apiClient.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 );
+
+export const getUserRole = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    return decodedToken.user.role;
+  }
+  return null;
+};
 
 export const getUsers = async () => {
   try {

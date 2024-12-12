@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/User/userContext";
 import { useContext } from "react";
+import { getUserRole } from "../services/userApi";
 
 export const Navbar = () => {
   const { authStatus, logout } = useContext(AuthContext);
+  const userRole = getUserRole();
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -61,14 +63,16 @@ export const Navbar = () => {
                 Productos
               </Link>
             </li>
-            <li>
-              <Link
-                to="/admin"
-                className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Administrador
-              </Link>
-            </li>
+            {userRole === "admin" ? (
+              <li>
+                <Link
+                  to="/admin"
+                  className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                >
+                  Administrador
+                </Link>
+              </li>
+            ) : null}
             <li>
               <Link
                 to="/cart"
