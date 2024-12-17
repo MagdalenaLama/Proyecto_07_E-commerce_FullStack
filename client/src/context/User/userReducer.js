@@ -1,6 +1,10 @@
 export const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_EXITOSO":
+      return {
+        ...state,
+        authStatus: true,
+      };
     case "REGISTRO_EXISTOSO":
       return {
         ...state,

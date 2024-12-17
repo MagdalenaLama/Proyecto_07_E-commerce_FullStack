@@ -59,6 +59,7 @@ export const registerUser = async (userData) => {
 export const authenticate = async (credentials) => {
   try {
     const { data } = await apiClient.post("/users/login", credentials);
+    console.log(data);
     return data; // Devuelve sólo el token
   } catch (error) {
     if (error.response && error.response.data) {

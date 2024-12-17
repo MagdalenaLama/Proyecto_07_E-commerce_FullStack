@@ -3,16 +3,19 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/Cart/cartContext";
 import { CartItem } from "./CartItem";
+import { AuthContext } from "../../context/User/userContext";
 
 export const CartList = () => {
   const { cart, clearCart } = useContext(CartContext);
+  const { authStatus } = useContext(AuthContext);
   const [preferenceID, setPreferenceID] = useState(null);
   initMercadoPago("APP_USR-02ca11dd-0bb4-4668-b160-e5151e0f975d", {
     locale: "es-CL",
   });
 
+  const [error, setError] = useState(null);
   const createPreference = async () => {
-    if (cart.length === 0) {
+    if (cart.length === 0 && authStatus) {
       alert("El carrito está vacío.");
       return;
     }
@@ -61,10 +64,14 @@ export const CartList = () => {
     0
   );
   const handlePay = async () => {
-    const res = await createPreference();
-    console.log(res);
-    if (res) {
-      setPreferenceID(res);
+    if (authStatus) {
+      const res = await createPreference();
+      console.log(res);
+      if (res) {
+        setPreferenceID(res);
+      }
+    } else {
+      setError("Inicie sesión para continuar la compra");
     }
   };
   return (
@@ -110,6 +117,9 @@ export const CartList = () => {
         >
           Continuar compra
         </button>
+        {error && (
+          <p className="text-red-500 text-sm mt-3 text-center">{error}</p>
+        )}
         {preferenceID && (
           <Wallet initialization={{ preferenceId: preferenceID }} />
         )}
