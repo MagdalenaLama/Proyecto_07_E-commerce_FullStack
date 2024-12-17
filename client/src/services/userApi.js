@@ -39,7 +39,7 @@ export const getUsers = async () => {
 export const registerUser = async (userData) => {
   try {
     const { data } = await apiClient.post("/users/register", userData);
-    return data; // Devuelve el id y token
+    return data;
   } catch (error) {
     if (error.response && error.response.data) {
       // Captura el mensaje devuelto por el backend
@@ -50,17 +50,11 @@ export const registerUser = async (userData) => {
   }
 };
 
-/**
- * Esta función recibe unas credenciales como objeto y me retorna un token desde el llamado a la API de autenticación
- * @param {object} credentials
- * @returns {string} - Retorna el Token
- */
-
 export const authenticate = async (credentials) => {
   try {
     const { data } = await apiClient.post("/users/login", credentials);
     console.log(data);
-    return data; // Devuelve sólo el token
+    return data;
   } catch (error) {
     if (error.response && error.response.data) {
       // Captura el mensaje devuelto por el backend
