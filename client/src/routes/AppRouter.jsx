@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Home, Cart, Login, Register, Products, Admin } from "../pages/index";
 import { PrivateRoute } from "./PrivateRoute";
+import { Footer } from "../components/Footer";
 
 export const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ export const AppRouter = () => {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 };

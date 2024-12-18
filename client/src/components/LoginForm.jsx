@@ -18,9 +18,8 @@ export const LoginForm = () => {
   const [error, setError] = useState(null); // Estado para manejar errores
 
   useEffect(() => {
-    verifyingToken();
-
     if (authStatus) {
+      verifyingToken();
       console.log(`Token correcto`);
     }
   }, [authStatus]);
