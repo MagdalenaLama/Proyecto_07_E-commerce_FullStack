@@ -1,5 +1,5 @@
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import axios from "axios";
+import { apiClient } from "../../services/userApi";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/Cart/cartContext";
 import { CartItem } from "./CartItem";
@@ -9,7 +9,9 @@ export const CartList = () => {
   const { cart, clearCart } = useContext(CartContext);
   const { authStatus } = useContext(AuthContext);
   const [preferenceID, setPreferenceID] = useState(null);
-  initMercadoPago("APP_USR-02ca11dd-0bb4-4668-b160-e5151e0f975d", {
+  const mercadopagoPublicKey = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
+
+  initMercadoPago(mercadopagoPublicKey, {
     locale: "es-CL",
   });
 
@@ -29,8 +31,8 @@ export const CartList = () => {
     }));
 
     try {
-      const response = await axios.post(
-        "https://proyecto-06-aplicacion-backend-con.onrender.com/create_preference",
+      const response = await apiClient.post(
+        "/create_preference",
         { items } // Datos que envías al backend
       );
 

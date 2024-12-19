@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const URL_BASE = "https://proyecto-06-aplicacion-backend-con.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const apiProductsClients = axios.create({
-  baseURL: URL_BASE,
+  baseURL: API_URL,
 });
 
 apiProductsClients.interceptors.request.use(

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-
-const API_URL = "https://proyecto-06-aplicacion-backend-con.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const apiClient = axios.create({
   baseURL: API_URL,
