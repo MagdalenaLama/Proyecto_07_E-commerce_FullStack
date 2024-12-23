@@ -13,7 +13,7 @@ Este repositorio contiene el frontend del proyecto **E-commerce Fullstack**, una
 ## **Tecnologías utilizadas**
 
 - **Frontend:** React, Vite, Tailwind CSS
-- **Backend:** Node.js, Express (ver el [repositorio del backend](https://github.com/MagdalenaLama/Proyecto_06_Aplicacion_Backend))
+- **Backend:** Node.js, Express (ver el [repositorio del backend](https://github.com/MagdalenaLama/Proyecto_06_Aplicacion-Backend-con-Autorizacion))
 - **Despliegue:** Netlify (frontend) y Render (backend)
 
 ## **Requisitos previos**
